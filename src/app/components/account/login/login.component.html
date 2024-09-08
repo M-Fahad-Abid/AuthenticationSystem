@@ -1,0 +1,43 @@
+<div class="main-content">
+  <div class="loginform">
+    <div class="container">
+      <div class="heading">SignIn to your account</div>
+      
+      <form #loginForm="ngForm" class="form" (ngSubmit)="login()">
+       
+        <div class="input-field">
+          <input
+            required=""
+            autocomplete="off"
+            type="email"
+            name="email"
+            id="email"
+            [(ngModel)]="loginData.email"
+          />
+          <label for="email">Email</label>
+        </div>
+
+        <div class="input-field">
+          <input
+            required=""
+            autocomplete="off"
+            type="password"
+            name="text"
+            id="password"
+            [(ngModel)]="loginData.password"
+          />
+          <label for="username">Password</label>
+        </div>
+
+        <div class="btn-container">
+          <button class="btn" type="submit">Login</button>
+          <div class="acc-text">
+            New here ?
+            <span style="color: #0000ff; cursor: pointer" (click)="registerButton()" >Create Account</span>
+            <!-- <a style="color: #0000ff; cursor: pointer" routerLink="" >Create Account</a> -->
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
