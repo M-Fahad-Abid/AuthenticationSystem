@@ -1,0 +1,32 @@
+.main-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 1fr 1fr;
+  background: repeating-linear-gradient(
+    45deg,
+    #0050fc,
+    #0050fc 20px,
+    #0684fade 20px,
+    #0684fade 40px
+  );
+  height: 130px;
+}
+
+.footer-section-left {
+  display: flex;
+  flex-direction: column;
+  padding-left: 5%;
+  padding-top: 40px;
+}
+
+.footer-section-right {
+  display: flex;
+  flex-direction: column;
+
+  padding-top: 20px;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}

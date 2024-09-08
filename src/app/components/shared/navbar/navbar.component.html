@@ -1,0 +1,25 @@
+@if (service.userCookie()) {
+  <div class="main-container">
+    <!-- links -->
+    <div class="navbar-item-link">
+      <a routerLink="">Options</a>
+      <a routerLink="">Profile</a>
+    </div>
+  
+    <!-- logo -->
+    <div class="navbar-item-logo">
+      <div class="logo-image">
+        <a routerLink="">
+          <img src="../../../../assets/images/pngwing.com(1).png" alt="" />
+        </a>
+      </div>
+    </div>
+  
+    <!-- buttons -->
+    <div class="navbar-item-buttons">
+      
+      <button class="btn btn-secondary" (click)="logout()">Logout</button>
+    </div>
+  </div>
+}
+
