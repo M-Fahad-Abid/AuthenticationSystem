@@ -3,7 +3,7 @@ import { environment } from '../../environments/environment.development';
 import { HttpClient } from '@angular/common/http';
 import { Login } from '../model/user/login';
 import { CookieService } from 'ngx-cookie-service';
-import { tap } from 'rxjs';
+import { map, tap } from 'rxjs';
 import { Register } from '../model/user/register';
 import { Cookie } from '../model/cookie';
 
@@ -19,30 +19,29 @@ export class AccountService {
 
   private cookies = inject(CookieService);
 
+
+
+
+
+
   loginUser(data: any) {
-    return this.http.post<Cookie>(this.url + 'api/account/login', data).pipe(
-      tap((response) => {
-        // this.cookies.set('cookieData', JSON.stringify(response));
-        localStorage.setItem("user", JSON.stringify(response));
-
-        if (response) {
-          console.log('This is the response', response);
+    return this.http.post<Cookie>(this.url + 'api/account/login', data).pipe(map(
+      response => {
+        if(response){
+          localStorage.setItem("userData", JSON.stringify(response));
           this.userCookie.set(response);
-
         }
-      })
-    );
+      }
+    ))
   }
 
   registerUser(data: any) {
     return this.http.post<Register>(this.url + 'api/account/register', data);
   }
 
-
-  logoutUser(){
-  //  this.cookies.delete('cookieData');
-   localStorage.removeItem("user");
-   this.userCookie.set(null);
+  logoutUser() {
+    //  this.cookies.delete('cookieData');
+    localStorage.removeItem('userData');
+    this.userCookie.set(null);
   }
-
 }

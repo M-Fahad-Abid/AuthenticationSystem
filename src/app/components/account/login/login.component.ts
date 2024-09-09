@@ -4,6 +4,7 @@ import { routes } from '../../../app.routes';
 import { AccountService } from '../../../service/account.service';
 import { FormsModule, NgForm } from '@angular/forms';
 import { Login } from '../../../model/user/login';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
@@ -16,6 +17,8 @@ export class LoginComponent {
   private route = inject(Router);
 
   private service = inject(AccountService);
+
+  private toastMessage = inject(ToastrService);
 
   loginData: Login = {
     email: '',
@@ -30,6 +33,7 @@ export class LoginComponent {
     this.service.loginUser(this.loginData).subscribe({
       next: (response) => {
         console.log("That's the response", response);
+        this.toastMessage.success("welcome ", "Hurah")
         this.route.navigate(["/home"]);
 
       },

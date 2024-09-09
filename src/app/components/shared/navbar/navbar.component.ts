@@ -1,6 +1,7 @@
 import { Component, inject, signal } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { AccountService } from '../../../service/account.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-navbar',
@@ -14,8 +15,11 @@ export class NavbarComponent {
 
   private router = inject(Router)
 
+  private toastMessage = inject(ToastrService);
+
   logout() {
     this.service.logoutUser();
+    this.toastMessage.info("see you again","Bye");
     this.router.navigate(["/user-login"]);
   }
 }
